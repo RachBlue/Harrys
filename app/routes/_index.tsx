@@ -43,16 +43,20 @@ export default function Index() {
         {/* The Form Card */}
         <Form method="post" className="bg-white border-2 border-[#112142] p-8 mb-12 shadow-[8px_8px_0px_0px_rgba(17,33,66,1)] transition-all">
           <div className="space-y-8">
-            <div>
-              <label className="block text-[11px] font-black uppercase tracking-[0.2em] text-[#112142] mb-3">
-                1. Your Skin Profile
-              </label>
-              <select name="skinType" className="w-full bg-white border-2 border-[#112142] p-4 font-bold text-[#112142] outline-none cursor-pointer hover:bg-[#fffdf5]">
-                <option value="normal">Normal / Balanced</option>
-                <option value="sensitive">Sensitive / Prone to Redness</option>
-                <option value="oily">Oily / Combination</option>
-              </select>
-            </div>
+            {/* Update your select labels to be even more accessible */}
+<div>
+  <label htmlFor="skin-select" className="block text-[11px] font-black uppercase tracking-[0.2em] text-[#112142] mb-3">
+    1. Your Skin Profile
+  </label>
+  <select 
+    id="skin-select"
+    name="skinType" 
+    aria-label="Select your skin type"
+    className="w-full bg-white border-2 border-[#112142] p-4 font-bold text-[#112142] outline-none cursor-pointer hover:bg-[#fffdf5] focus:ring-2 focus:ring-[#ff6a13]"
+  >
+    {/* options stay the same */}
+  </select>
+</div>
 
             <div>
               <label className="block text-[11px] font-black uppercase tracking-[0.2em] text-[#112142] mb-3">

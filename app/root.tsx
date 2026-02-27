@@ -30,7 +30,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      {/* Removed the blue div and added the Harry's cream background color */}
+      <link rel="icon" href="https://www.harrys.com/favicon.ico" />
       <body className="bg-[#fffdf5] antialiased">
         <Outlet />
         <ScrollRestoration />
