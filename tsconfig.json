@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./app/*"]
-    },
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "types": ["@remix-run/node", "vite/client"],
     "strict": true,
-    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react-jsx"
+  },
+  "include": ["app"],
+  "baseUrl": ".",
+  "paths": {
+    "~/*": ["./app/*"]
   }
 }

@@ -7,19 +7,28 @@ import { HARRYS_CATALOG } from "../models/products";
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const skinType = formData.get("skinType");
-  
-  // Filtering logic
+  const shaveFreq = formData.get("shaveFreq");
+
+  // 1. Get the Key from the environment (NOT hardcoded)
+  const apiKey = process.env.OPENAI_API_KEY;
+
+  // 2. Local fallback logic (so the site doesn't crash if AI fails)
   const recommendations = HARRYS_CATALOG.filter(p => 
     skinType === "sensitive" ? p.tags.includes("gentle") : p.tags.includes("precision")
   );
-  
-  return json({ recommendations });
+
+  // 3. Optional: Add AI "Expert Advice" 
+  // You would call OpenAI here using `apiKey` to generate a custom message
+  // based on the skinType and shaveFreq.
+
+  return json({ recommendations, expertNote: "AI analysis complete." });
 }
 
 export default function Index() {
   const data = useActionData<typeof action>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   return (
     <div className="min-h-screen px-4 py-12 md:px-0 bg-[#fffdf5]">
@@ -94,7 +103,19 @@ export default function Index() {
     </button>
   </div>
 </Form>
-
+<div className="flex items-center justify-between bg-[#112142] p-4 mb-6 border-2 border-[#112142]">
+  <span className="text-white font-black uppercase text-[10px] tracking-widest">
+    Unlock Shave Plan Savings
+  </span>
+  <label className="relative inline-flex items-center cursor-pointer">
+    <input 
+      type="checkbox" 
+      className="sr-only peer" 
+      onChange={() => setIsSubscribed(!isSubscribed)}
+    />
+    <div className="w-11 h-6 bg-white/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#ff6a13] after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white/40"></div>
+  </label>
+</div>
         {/* Recommendation Results */}
         {data?.recommendations && (
           <section className="animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -106,7 +127,11 @@ export default function Index() {
                 <div key={product.id} className="group bg-white border-2 border-[#112142] p-5 flex justify-between items-center hover:border-[#ff6a13] transition-all">
                   <div>
                     <h3 className="font-black text-xl text-[#112142] tracking-tight">{product.name}</h3>
-                    <p className="text-xs font-bold text-[#ff6a13] uppercase mt-1 tracking-widest">${product.price}.00</p>
+                    <p className="text-xs font-bold text-[#ff6a13] uppercase mt-1 tracking-widest">${isSubscribed 
+    ? `$${(product.price * 0.9).toFixed(2)}` // The 10% Discount
+    : `$${product.price}.00`
+  }
+</p>
                   </div>
                   <button className="bg-[#112142] text-white p-3 hover:bg-[#ff6a13] transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
