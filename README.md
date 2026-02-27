@@ -1,8 +1,8 @@
-# 🪒 Harry's Routine Architect
+🪒 Harry's Routine Architect
 
-[Live Link here: https://harrys-rho.vercel.app/?index]
+**A custom-engineered recommendation engine built for the modern grooming experience.**
 
-A high-performance, personalized commerce concept built to demonstrate brand-aligned UI engineering and modern full-stack patterns.
+[**🚀 Launch Live Demo**](https://harrys-rho.vercel.app) | [**📄 Technical Case Study**](#-the-concept).
 
 ### 🚀 The Concept
 The **Routine Architect** solves "choice paralysis" in grooming. By leveraging a server-side recommendation engine, it transforms a complex product catalog into a simple, three-step "blueprint" for the user.
