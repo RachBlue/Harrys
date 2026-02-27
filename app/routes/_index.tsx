@@ -35,14 +35,22 @@ export default function Index() {
       <div className="max-w-xl mx-auto">
         {/* Logo & Header */}
         <header className="text-center mb-12">
-          <div className="inline-block bg-[#112142] text-white px-5 py-2 mb-6 shadow-[4px_4px_0px_0px_#ff6a13]">
-            <span className="text-3xl font-black italic tracking-tighter uppercase">H'</span>
-          </div>
-          <h1 className="text-4xl font-black text-[#112142] uppercase tracking-tight leading-none mb-2">
-            The Routine <span className="text-[#ff6a13]">Architect</span>
-          </h1>
-          <p className="text-[#112142] font-medium opacity-70 italic">Engineered for a better morning.</p>
-        </header>
+  {/* The Iconic H' Mascot/Logo */}
+  <div className="inline-block mb-6 transform hover:rotate-3 transition-transform cursor-pointer">
+    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#112142" />
+      <path d="M30 25V75M70 25V75M30 50H70" stroke="white" strokeWidth="12" strokeLinecap="square"/>
+      <path d="M75 25L82 20V35L75 40V25Z" fill="#ff6a13" /> 
+    </svg>
+  </div>
+  
+  <h1 className="text-4xl font-black text-[#112142] uppercase tracking-tight leading-none mb-2">
+    The Routine <span className="text-[#ff6a13]">Architect</span>
+  </h1>
+  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[#112142] opacity-60">
+    Quality Shave. Since 2013.
+  </p>
+</header>
 
         {/* The Form Card */}
        <Form method="post" className="bg-white border-2 border-[#112142] p-8 mb-12 shadow-[8px_8px_0px_0px_rgba(17,33,66,1)] transition-all">
@@ -127,10 +135,12 @@ export default function Index() {
                 <div key={product.id} className="group bg-white border-2 border-[#112142] p-5 flex justify-between items-center hover:border-[#ff6a13] transition-all">
                   <div>
                     <h3 className="font-black text-xl text-[#112142] tracking-tight">{product.name}</h3>
-                    <p className="text-xs font-bold text-[#ff6a13] uppercase mt-1 tracking-widest">${isSubscribed 
-    ? `$${(product.price * 0.9).toFixed(2)}` // The 10% Discount
-    : `$${product.price}.00`
-  }
+                    <p className="text-xs font-bold text-[#ff6a13] uppercase mt-1 tracking-widest">
+  {isSubscribed ? (
+    <span>Plan Price: ${(product.price * 0.9).toFixed(2)}</span>
+  ) : (
+    <span>${product.price}.00</span>
+  )}
 </p>
                   </div>
                   <button className="bg-[#112142] text-white p-3 hover:bg-[#ff6a13] transition-colors">
