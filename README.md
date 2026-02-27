@@ -2,6 +2,13 @@
 
 **A custom-engineered recommendation engine built for the modern grooming experience.**
 
+🚀 Why I Built This
+I’m a developer who obsesses over the intersection of engineering and customer experience. To show my interest in Harry's, I built The Routine Architect.
+
+It’s a full-stack Remix application that solves choice paralysis by generating a personalized shave regimen. I focused on three things: Performance, using server-side actions for instant results; Brand Identity, implementing a custom Neobrutalist UI that mirrors Harry’s physical products; and Business Logic, including a dynamic subscription toggle that calculates real-time Shave Plan savings.
+
+I even managed to navigate some complex deployment hurdles with Vercel and TypeScript along the way, which really sharpened my understanding of modern CI/CD pipelines.
+
 [**🚀 Launch Live Demo**](https://harrys-rho.vercel.app) | [**📄 Technical Case Study**](#-the-concept).
 
 ### 🚀 The Concept
