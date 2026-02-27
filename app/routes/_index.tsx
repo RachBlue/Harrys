@@ -1,13 +1,8 @@
 import { useState } from "react";
 import { Form, useActionData, useNavigation } from "@remix-run/react";
 import { json, type ActionFunctionArgs } from "@remix-run/node";
-
-const HARRYS_CATALOG = [
-  { id: 1, name: "Precision Razor", price: 25, tags: ["precision"] },
-  { id: 2, name: "Gentle Cream", price: 18, tags: ["gentle"] },
-  { id: 3, name: "Sensitive Balm", price: 22, tags: ["gentle"] },
-  { id: 4, name: "Pro Blade Set", price: 35, tags: ["precision"] },
-];
+import { HARRYS_CATALOG } from "../models/products";
+;
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
