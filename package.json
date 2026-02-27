@@ -1,4 +1,8 @@
 {
+  "name": "harrys-project",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
   "dependencies": {
     "@remix-run/node": "^2.17.4",
     "@remix-run/react": "^2.17.4",
